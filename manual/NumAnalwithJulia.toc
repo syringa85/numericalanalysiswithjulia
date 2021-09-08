@@ -1,0 +1,10 @@
+\contentsline {chapter}{\numberline {1}기초}{2}% 
+\contentsline {section}{\numberline {1.1}기본 개념}{2}% 
+\contentsline {paragraph}{정확도와 정밀도}{2}% 
+\contentsline {paragraph}{축소제곱법}{3}% 
+\contentsline {section}{\numberline {1.2}수학적 기초}{3}% 
+\contentsline {paragraph}{테일러 급수}{3}% 
+\contentsline {paragraph}{Complete Horner's Algorithm.}{3}% 
+\contentsline {paragraph}{교대급수 정리}{5}% 
+\contentsline {section}{\numberline {1.3}부동소수점(Floating Point Number)}{5}% 
+\contentsline {chapter}{\numberline {A}Julia 입문}{7}% 

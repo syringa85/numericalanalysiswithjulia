@@ -1,0 +1,211 @@
+\documentclass[a4paper, 11pt]{report}
+
+%ams package
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{kotex}
+\usepackage{geometry}
+\usepackage[cmyk, dvipsnames, svgnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{makeidx}
+\usepackage{latexsym}
+
+
+%basic inform
+\title{수치해석학 \\with Julia}
+\author{김준환}
+\date{\today}
+
+%layout
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{coro}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem*{defn}{Definition}
+\newtheorem*{rmk}{Remark}
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\renewcommand{\baselinestretch}{1.6}
+
+\chapter{기초}
+\section{기본 개념}
+\begin{defn}[유효숫자]
+\textbf{유효숫자}란 하나의 수에서 가장 왼쪽의 0부터 시작해서 정확하다고 간주하는 가장 오른쪽의 숫자를 뜻한다.
+\end{defn}
+
+\begin{defn}
+근사값  $\alpha$와 참값 $\beta$가 있다고 하자. \textbf{절대오차}는
+\[
+|\alpha - \beta|
+\]
+로 정의된다. 만약 참값이 0이 아니라면 \textbf{상대오차}는
+\[
+\frac{|\alpha-\beta|}{|\beta|}
+\]
+로 정의된다. 상대오차가 유효숫자를 좀 더 잘 나타낸다.
+\end{defn}
+
+\paragraph{정확도와 정밀도} 
+\emph{소수점 아래 n자리까지 정확하다는 말은 소수점 오른쪽의 n자리 숫자까지 신뢰할 수 있다}는 말이다. \\
+\emph{n개의 유효숫자 까지가 정확하다는 말은 가장 왼쪽의 0이 아닌 숫자부터 시작하여 전체 n개의 숫자가 의미 있는 숫자}라는 뜻이다. \\
+\emph{수 x를 n자리 수로 버린다는 말은 n번째 자리까지의 수들은 그대로 유지한 채 n자리 이후의 숫자를 버린다}는 것이다. 
+반대로 \emph{n자리 수로 반올림 한다는 것은 x를 x와 가장 가까운 n자리 수로 대체함}을 의미한다.
+\begin{rmk}
+    사칙연산을 하면 가장 적은 유효 숫자만큼의 정확도를 갖는다.
+\end{rmk}
+
+\paragraph{축소제곱법}
+다음과 같은 다항식
+\begin{equation}
+p(x) = a_0 + a_1x+\cdots +a_nx^n
+\end{equation}
+을 
+\begin{equation}
+p(x) = a_0 + x(a_1+x(a_2 + \cdots + x(a_{n-1} +xa_n) \cdots ))
+\end{equation}
+로 묶는 것을 \textbf{축소제곱법(nested multiplication)}이라 하며 이를 이용하는 알고리즘을 \textbf{호너 알고리즘(Horner's Alogirtm)}이라고 한다.\footnote{호너 알고리즘은 조립제법하고 같은 것이다. 이를 이용해 일차식으로 나눌 수 있다.}
+
+%호너 알고리즘
+\begin{algorithm}
+\caption{Horner}\label{Horner1}
+    \begin{algorithmic}
+        \Require $ x,\,(a_i)_{0:n} \in \mathbb{R}$
+        \Ensure $p =  a_0 + a_1x+\cdots +a_nx^n$
+        \State $p \gets a_n$
+        \For {$i = n-1$ to 0}
+            \State $ p \gets a_i + x\times p$
+        \EndFor
+    \end{algorithmic}
+\end{algorithm}
+
+
+\section{수학적 기초}
+
+\paragraph{테일러 급수}
+테일러 급수를 잘 알자. \textcolor{Red}{테일러 급수는 구하고자 하는 값의 근방에서 전개할 수록 좋다.}
+
+\begin{defn}[테일러 급수]
+실변수 일차 함수 $f$의 점 $c\in\mathbb{R}$에서 전개한 테일러 급수는 다음을 뜻한다.
+    \begin{equation}
+        \sum_{k=0}^{\infty}\frac{f^{(k)}}{k!}(x-c)^k
+    \end{equation}
+\end{defn}\footnote{$c=0$일 때는 Maclaurin 급수라 한다.}
+
+\paragraph{Complete Horner's Algorithm.}
+호너 알고리즘을 응용하여 임의의 점  $r \in \mathbb{R}$ 에서의 다항식의 테일러 급수를 구하여 보자.
+즉 
+
+\[
+    p(x) = a_0 + a_1x+\cdots +a_nx^n
+    = b_n(x-r)^n+b_{n-1}(x-r)^{n-1}+ \cdots + b_1(x-r)+b_0
+\]
+를 만족하는 실계수들 $(b_{0:n})$을 구하는 과정이다. 다음 알고리즘은 계수들을 덮어쓴다.
+\begin{algorithm}[h]
+    \caption{Complete Horner}\label{Horner2}
+        \begin{algorithmic}
+            \Require $ r,\,(a_i)_{0:n} \in \mathbb{R}$
+            \Ensure $p =  a_0 + a_1x+\cdots +a_nx^n$
+            \State $p \gets a_n$
+            \For {$k = 0$ to $n-1$}
+                \For{$j = n-1$ to $k$}
+                    \State $ a_j \gets a_j + a_{j+1}\times r$
+                \EndFor
+            \EndFor
+    \end{algorithmic}
+\end{algorithm}    
+
+테일러 정리는 다음과 같다.
+\begin{theorem}[테일러]
+    함수 $f$가 닫힌구간 $[a, b]$에서 연속적이며 열린구간 $(a, b)$에서 $n+1$급 함수일 때 임의의 $x,\,c \in [a, b]$에 대해
+    \begin{equation}
+        f(x) = \sum_{k=0}^{n}\frac{f^{(k)}}{k!}(x-c)^k + E_{n+1}
+    \end{equation}  
+    이 성립한다. 여기서 오차항 $E_{n+1}$은 다음과 같다.
+    \begin{equation}
+        E_{n+1} = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-c)^{n+1}
+    \end{equation}  
+\end{theorem}\footnote{여기서 오차항을 Lagrange's form라 한다.} \\
+n = 0 인 경우에는 \textbf{평균값 정리}를 얻을 수 있다. \\
+앞으로의 사용을 위해 \textbf{빅오(Big O)} 표기법을 도입하자.
+\begin{defn}[빅 오]
+    함수 $f$와 $g$에 대해
+    \[
+        |f|\leq C|g|
+    \]
+    를 만족하는 양의 상수 $C$가 존재하면 
+    \[ 
+        f = \mathcal{O}(g)
+    \]
+    라고 표기한다.
+\end{defn}
+\paragraph{교대급수 정리} 교대급수에 대한 다음 정리 또한 급수의 전개에 대한 유용한 정보를 제공한다. 
+
+\begin{theorem}[교대급수]
+    급수 $(a_i) \in \mathbb{R}$이 부호가 교대로 나타나며 
+    $\lim_{i \to \infty}a_i = 0$이면 이들의 합은
+    \[
+        S = \sum_{i=1}^{\infty}a_i < \infty
+    \]
+    이며 $S_n$을 $n$번째 항까지의 합이라 할때 
+    \[
+        |S-S_n| \leq a_{n+1}
+    \]
+    을 만족한다.
+\end{theorem}
+
+
+\section{부동소수점(Floating Point Number)}
+실수를 십진법으로 표현하는 방법은 정수부분과 실수부분을 소수점으로 구분하여 표현하는 방법이다.
+이중에서도 표준적인 방법으로 \textbf{정규화된 과학적 표기법}이 있다.\footnote{이는 0이 아닌 실수를 절대값이 1보다 작으며 소수 첫째점은 0이 아닌 소수와 10의 거듭제곱 꼴로 표현하는 것이다.}
+컴퓨터 과학에서는 다음과 같은 \textbf{정규화된 부동소수점 표현}을 쓴다.  
+\begin{defn}[정규화된 부동소수점 표현]
+$0$이 아닌 모든 실수 $x$는 다음과 같은 정규화된 부동소수점 표현으로 나타낼 수 있다.
+\begin{equation}
+    x = \pm 0.d_1d_2d_3\cdots \times 10^n
+\end{equation}
+$d_i \in \{0, 1, 2, \cdots ,9\} \quad d_1 \neq 0$ 이고 $n \in \mathbb{Z}$.
+\end{defn}
+이는 다음과 같이 표현 할수도 있는데 
+\[
+    x = \pm r \times 10^n \quad (\frac{1}{10} \leq r < 1)
+\]
+여기서 $r$을 \textbf{정규화한 가수} $n$을 \textbf{지수}라고 한다. 
+이러한 내용은 임의의 진법에서도 동일하게 적용 될 수 있다. \\
+한편 컴퓨터는 문제가 있다. 어떤 숫자든 2진법으로 나타냈을 때 유한소수만을 표현될 수 있으며
+처리시 저장공간\footnote{정확히 말해 word의 문제}상 제한 때문에 너무 작거나 큰 유한소수 또한 표현이 불가능하다.
+이런 컴퓨터가 표현할 수 있는 숫자를 \textbf{머신넘버(Machine Number)}라고 한다. 특히 유한전개 소수는 진법마다 다를 수 있다.
+어떤 진법에서는 유한할지라도 다른 진법에서는 무한소수로 표현될 수가 있는 것이다. 
+\begin{rmk}
+    특히 머신넘버는 0에 대해 대칭적이지만 불규칙적으로 분포되어 있다.(0쪽에 몰려 있다.)
+\end{rmk}
+\begin{defn}[플로]
+    계산 과정에서 허용하는 범위를 넘는 큰 수 $x$가 생성되면 \textbf{오버플로}가 발생했다고 한다.
+    역으로 표현할수 없는 작은 수가 발생하면 \textbf{언더플로}가 발생했다고 한다.
+\end{defn}
+오버플로는 보통 작동이 중단되나 언더플로는 0으로 처리한다. 이 0에서 표현할수 가장 작은 수까지의 범위를 0에서의 구멍이라고 한다.
+
+
+%--------------------------------------------------------------------------
+\appendix
+
+
+\chapter{Julia  입문}
+
+\begin{thebibliography}{123456}
+    \bibitem{Ward1} Ward, C and David, K. (2012). \emph{Numerical Mathematics and Computing 7th edition} CENAGE.
+    \bibitem{JulMan} The Julia Project. (2021). \emph{The Julia Language} https://julialang.org/.
+\end{thebibliography}
+
+\end{document}
