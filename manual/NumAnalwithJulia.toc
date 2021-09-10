@@ -8,3 +8,10 @@
 \contentsline {paragraph}{교대급수 정리}{5}% 
 \contentsline {section}{\numberline {1.3}부동소수점(Floating Point Number)}{5}% 
 \contentsline {chapter}{\numberline {A}Julia 입문}{7}% 
+\contentsline {section}{\numberline {A.1}기초}{7}% 
+\contentsline {subsection}{\numberline {A.1.1}변수}{7}% 
+\contentsline {subsection}{\numberline {A.1.2}정수와 부동소수점수}{8}% 
+\contentsline {paragraph}{계수 컨벤션}{9}% 
+\contentsline {subsection}{\numberline {A.1.3}연산자/기초 함수}{9}% 
+\contentsline {paragraph}{산술 연산자}{9}% 
+\contentsline {paragraph}{불리언 연산자와 비트 연산자}{9}% 
