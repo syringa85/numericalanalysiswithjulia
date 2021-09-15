@@ -36,6 +36,8 @@ INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
 INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
+INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
 INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/cjk-ko/kotex.sty
 INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/cjk-ko/kotex.sty
 INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/kotex-utf/kotexutf.sty
@@ -43,8 +45,6 @@ INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/kotex-utf/kotex.cfg
 INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/kotex-utf/kotex.cfg
 INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/kotex-utf/kotexutf.sty
 INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/kotex-utf/kotexutf.sty
-INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
-INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
 INPUT c:/usr/texlive/2018/texmf-dist/tex/plain/kotex-plain/kotexutf-core.tex
 INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/kotex-utf/hfontspec.default
 INPUT c:/usr/texlive/2018/texmf-dist/tex/latex/kotex-utf/lucenc.dfu
@@ -173,12 +173,13 @@ INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmcd.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmbd.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmb3.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmc1.tfm
+INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmc7.tfm
+INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmd6.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbc7.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbbb.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmc6.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmc5.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmc0.tfm
-INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmc7.tfm
 OUTPUT e:/Documents/GitHub/numericalanalysiswithjulia/manual/NumAnalwithJulia.toc
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
@@ -190,7 +191,6 @@ INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbae.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbbc.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbac.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbb1.tfm
-INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmd6.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbd6.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbc2.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmb7.tfm
@@ -314,6 +314,11 @@ INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbba.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmd2.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmd7.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbb8.tfm
+INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmbf.tfm
+INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmbe.tfm
+INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmd2.tfm
+INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbc7.tfm
+INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbd6.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbc7.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbbb.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
@@ -330,7 +335,6 @@ INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbbd.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbb3.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbc1.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmd0.tfm
-INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmbf.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmc0.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbce.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmc3.tfm
@@ -340,6 +344,7 @@ INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbc7.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbae.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbcd.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbd5.tfm
+INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbd2.tfm
 INPUT e:/Documents/GitHub/numericalanalysiswithjulia/manual/NumAnalwithJulia.aux
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -357,6 +362,7 @@ INPUT c:/usr/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
+INPUT c:/usr/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/type1/public/nanumtype1/nanummjbac.pfb
 INPUT c:/usr/texlive/2018/texmf-dist/fonts/type1/public/nanumtype1/nanummjbad.pfb
